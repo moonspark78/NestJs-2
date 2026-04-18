@@ -30,4 +30,9 @@ export class UsersService {
         this.users[index] = user;
         return user;
     }
+
+    delete(id: number): string {
+        this.users = this.users.filter(user => user.id !== id);
+        return "User deleted successfully";
+    }
 }
