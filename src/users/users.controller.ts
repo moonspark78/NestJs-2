@@ -7,7 +7,8 @@ import {
     Param,
     ParseIntPipe,
     Patch,
-    Post 
+    Post, 
+    Query
 } from '@nestjs/common';
 import { UsersService } from './users.service';
 import type { User } from '../../types/usersType';
@@ -27,6 +28,15 @@ export class UsersController {
 
     findOne(@Param('id', ParseIntPipe) id: number): User {
         return this.usersService.findOne(id);
+    }
+
+    @Get()
+    @HttpCode(200)
+    findAllWithQuery(
+        @Query('page') page: string,
+        @Query('limit') limit: string,
+    ): string {
+        return `Page: ${page}, Limit: ${limit}`;
     }
 
     @Post()
