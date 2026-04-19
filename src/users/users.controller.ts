@@ -32,7 +32,7 @@ export class UsersController {
         return this.usersService.findOne(id);
     }
 
-    @Get()
+    @Get('query')
     @HttpCode(200)
     findAllWithQuery(
         @Query('page') page: string,
