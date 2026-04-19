@@ -14,7 +14,13 @@ export class AuthGuard implements CanActivate {
         if (!token) {
             throw new UnauthorizedException("No token provided");
         }
-
+        if ( token !== "3728973892837439" ) {
+            throw new UnauthorizedException("Invalid token");
+        }
         return true;
+    }
+    private extractTokenFromHeader(request: Request): string | undefined {
+        const [type, token] = request.headers.authorization?.split(" ") ?? [];
+        return type === "Bearer" ? token : undefined;
     }
 }
