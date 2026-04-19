@@ -12,11 +12,11 @@ export class CreateUserDto {
     @IsNotEmpty({ message: 'Name is required' })
     @MinLength(3, { message: 'Name must be at least 3 characters long' })
     @MaxLength(20, { message: 'Name must be at most 20 characters long' })
-    name?: string;
+    name: string;
     @IsString({ message: 'Email must be a string' })
     @IsNotEmpty({ message: 'Email is required' })
-    email?: string
+    email: string;
     @IsOptional()
     @IsEnum(['admin', 'user'], { message: 'Role must be either admin or user' })
-    role?: 'admin' | 'user'; 
+    role: 'admin' | 'user'; 
 }
